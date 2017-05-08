@@ -10,12 +10,7 @@ import org.springframework.context.annotation.Bean;
 public class DemoApplication {
 	@Bean
 	public CommandLineRunner cmdRunner(@Value("${greeter.location") String greeterLocation) {
-		return new CommandLineRunner() {
-			@Override
-			public void run(String... args) throws Exception {
-				System.out.println("demo application run from kash" + greeterLocation);
-			}
-		};
+		return args -> System.out.println("Hi " +  greeterLocation);
 
 	}
 
