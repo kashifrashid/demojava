@@ -3,6 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- Maven identifies this project by its group, artifact name, and version. -->
 	<groupId>d.kash.training</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -11,32 +12,36 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 
+	<!-- The Spring Boot parent supplies compatible dependency and build-plugin versions. -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<!-- Resolve the parent from Maven repositories, not a local parent POM. -->
+				<relativePath/>
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- This legacy project targets Java 8; use a JDK 8 installation to build it. -->
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
+		<!-- Core Spring Boot setup and logging; this does not add a web server. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
-
-
+		<!-- Adds application monitoring support; HTTP endpoints need a web stack. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+		<!-- JUnit 4 and Spring testing tools are available only when compiling/running tests. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -46,6 +51,7 @@
 
 	<build>
 		<plugins>
+			<!-- Packages an executable JAR and provides the spring-boot:run command. -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
